@@ -67,9 +67,10 @@ app.put('/update_todo/:id',async(req,res)=>{
 
 app.delete("/delete_id/:id",async(req,res)=>{
     try{
-        const datas=await TodoSchema.findByIdAndDelete(req.params.id)
+        await TodoSchema.findByIdAndDelete(req.params.id1);
+        await TodoSchema.findByIdAndDelete(req.params.id2);
         return res.json({
-            message:"todo deleted Bro!"
+            message:"todo deleted"
         })
     }
     catch(err){
