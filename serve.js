@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 const MONGO_URI =
-  "mongodb+srv://SHANNU:opUyvSXjFSaVLNVe@nodejs.nkun5i2.mongodb.net/?appName=NODEJS";
+  "";
 
 mongoose
   .connect(MONGO_URI)
