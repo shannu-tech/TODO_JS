@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
@@ -9,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-const MONGO_URI =("mongodb+srv://SHANNU:opUyvSXjFSaVLNVe@nodejs.nkun5i2.mongodb.net/?appName=NODEJS");
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)
@@ -77,6 +79,6 @@ app.delete("/delete/:id1/:id2",async(req,res)=>{
     }
 })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("🚀 Server Running on http://localhost:3000");
 });
