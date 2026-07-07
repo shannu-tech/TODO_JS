@@ -1,16 +1,17 @@
+require("dotenv").config();
+
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 const express = require("express");
 const mongoose = require("mongoose");
 const TodoSchema = require("./todo");
-
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
 
-const MONGO_URI =
-  "";
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)
@@ -65,7 +66,7 @@ app.put('/update_todo/:id',async(req,res)=>{
 })
 
 
-app.delete("/delete_id/:id",async(req,res)=>{
+app.delete("/delete_id1/:id2",async(req,res)=>{
     try{
         await TodoSchema.findByIdAndDelete(req.params.id1);
         await TodoSchema.findByIdAndDelete(req.params.id2);
@@ -78,6 +79,6 @@ app.delete("/delete_id/:id",async(req,res)=>{
     }
 })
 
-app.listen(3000, () => {
-  console.log("🚀 Server Running on http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`🚀 Server Running on port ${PORT}`);
 });
