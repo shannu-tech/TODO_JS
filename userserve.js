@@ -6,7 +6,7 @@ dns.setServers(["8.8.8.8", "1.1.1.1"]);
 const express = require("express");
 const mongoose = require("mongoose");
 const UserSchema = require("./usertodo");
-
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
@@ -79,6 +79,6 @@ app.delete("/delete/:id1/:id2",async(req,res)=>{
     }
 })
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("🚀 Server Running on http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`🚀 Server Running on port ${PORT}`);
 });
